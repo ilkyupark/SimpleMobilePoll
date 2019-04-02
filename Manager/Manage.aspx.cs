@@ -22,46 +22,65 @@ namespace SimpleMobilePoll.Manager
             }
 
             string myState = string.Empty;
-            Application.Lock();
-            ApplicationState intMyState = (ApplicationState)Application["MyState"];
-            if (intMyState == ApplicationState.BeforePoll)
+
+
+            //Application.Lock();
+            //ApplicationState intMyState = (ApplicationState)Application["MyState"];
+            //if (intMyState == ApplicationState.BeforePoll)
+            //    PollState.Text = "여론조사 시작 전";
+            //else if (intMyState == ApplicationState.PollOngoing)
+            //    PollState.Text = "여론조사 진행 중";
+            //else
+            //    PollState.Text = "여론조사 종료";
+            //Application.UnLock();
+
+            PollStateTableAdapter adapter = new PollStateTableAdapter();
+            int currentState = (int)adapter.GetData().Rows[0]["PollState"];
+
+            if (currentState == (int)ApplicationState.BeforePoll)
                 PollState.Text = "여론조사 시작 전";
-            else if (intMyState == ApplicationState.PollOngoing)
+            else if (currentState == (int)ApplicationState.PollOngoing)
                 PollState.Text = "여론조사 진행 중";
             else
                 PollState.Text = "여론조사 종료";
-            Application.UnLock();
-
         }
 
         protected void StartPollButton_Click(object sender, EventArgs e)
         {
-            Application.UnLock();
+            //Application.UnLock();
             // 현재 상태가 시작 전 상태일때만 시작 처리
-            if ((ApplicationState)Application["MyState"] == ApplicationState.BeforePoll)
+
+            PollStateTableAdapter adapter = new PollStateTableAdapter();
+            int currentState = (int)adapter.GetData().Rows[0]["PollState"];
+
+            if (currentState == (int)ApplicationState.BeforePoll)
             {
-                Application["MyState"] = ApplicationState.PollOngoing;
+                adapter.UpdateQuery((int)ApplicationState.PollOngoing);
                 MessageLabel.Text = "여론조사를 시작합니다.";
 
                 PollState.Text = "여론조사 시작 전";
             }
 
-            Application.UnLock();
+            //Application.UnLock();
         }
 
         protected void EndPollButton_Click(object sender, EventArgs e)
         {
-            Application.UnLock();
+            //Application.UnLock();
             // 현재 상태가 진행 중 상태일때만 시작 처리
-            if ((ApplicationState)Application["MyState"] == ApplicationState.PollOngoing)
+
+            PollStateTableAdapter adapter = new PollStateTableAdapter();
+            int currentState = (int)adapter.GetData().Rows[0]["PollState"];
+
+            if (currentState == (int)ApplicationState.PollOngoing)
             {
-                Application["MyState"] = ApplicationState.PollEnd;
+                adapter.UpdateQuery((int)ApplicationState.PollEnd);
                 MessageLabel.Text = "여론조사를 종료했습니다.";
 
                 PollState.Text = "여론조사 종료";
             }
 
-            Application.UnLock();
+            //Application.UnLock();
         }
 
         protected void InitButton_Click(object sender, EventArgs e)
@@ -73,9 +92,12 @@ namespace SimpleMobilePoll.Manager
             var userAdapter = new UserTableAdapter();
             userAdapter.DeleteQuery();
 
-            Application.Lock();
-            Application["MyState"] = ApplicationState.BeforePoll;
-            Application.UnLock();
+            //Application.Lock();
+            //Application["MyState"] = ApplicationState.BeforePoll;
+            //Application.UnLock();
+
+            PollStateTableAdapter adapter = new PollStateTableAdapter();
+            adapter.UpdateQuery((int)ApplicationState.BeforePoll);
 
             MessageLabel.Text = "여론조사 시작 전 상태입니다.";
 

@@ -54,7 +54,7 @@
               <Mapping SourceColumn="IPAddress" DataSetColumn="IPAddress" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[User]</CommandText>
@@ -72,7 +72,7 @@ ORDER BY UserId DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQuery">
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[User] ([Gender], [Position], [IPAddress]) VALUES (@Gender, @Position, @IPAddress)</CommandText>
@@ -129,7 +129,7 @@ ORDER BY UserId DESC</CommandText>
               <Mapping SourceColumn="Opinion" DataSetColumn="Opinion" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Opinion]</CommandText>
@@ -137,7 +137,7 @@ ORDER BY UserId DESC</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQuery">
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[Opinion] ([UserId], [Opinion]) VALUES (@UserId, @Opinion)</CommandText>
@@ -171,6 +171,41 @@ FROM  [User] INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PollStateTableAdapter" GeneratorDataComponentClassName="PollStateTableAdapter" Name="PollState" UserDataComponentName="PollStateTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="dbo.PollState" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[PollState] ([PollState]) VALUES (@PollState)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@PollState" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PollState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PollState FROM dbo.PollState</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PollState" DataSetColumn="PollState" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateQuery">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE [dbo].[PollState] SET [PollState] = @PollState</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="PollState" ColumnName="PollState" DataSourceName="[C:\USERS\LACIU\DOCUMENTS\MY WEB SITES\SIMPLEMOBILEPOLL\SIMPLEMOBILEPOLL\APP_DATA\SIMPLEMOBILEPOLL.MDF].dbo.PollState" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@PollState" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="PollState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -179,7 +214,7 @@ FROM  [User] INNER JOIN
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="User" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_TableVarName="tableUser" msprop:Generator_TablePropName="User" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_UserTableName="User" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_RowEvArgName="UserRowChangeEvent" msprop:Generator_RowClassName="UserRow">
+        <xs:element name="User" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_TableVarName="tableUser" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_TablePropName="User" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_RowClassName="UserRow" msprop:Generator_UserTableName="User" msprop:Generator_RowEvArgName="UserRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UserId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_UserColumnName="UserId" type="xs:int" />
@@ -207,7 +242,7 @@ FROM  [User] INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Opinion" msprop:Generator_TableClassName="OpinionDataTable" msprop:Generator_TableVarName="tableOpinion" msprop:Generator_TablePropName="Opinion" msprop:Generator_RowDeletingName="OpinionRowDeleting" msprop:Generator_RowChangingName="OpinionRowChanging" msprop:Generator_RowEvHandlerName="OpinionRowChangeEventHandler" msprop:Generator_RowDeletedName="OpinionRowDeleted" msprop:Generator_UserTableName="Opinion" msprop:Generator_RowChangedName="OpinionRowChanged" msprop:Generator_RowEvArgName="OpinionRowChangeEvent" msprop:Generator_RowClassName="OpinionRow">
+        <xs:element name="Opinion" msprop:Generator_TableClassName="OpinionDataTable" msprop:Generator_TableVarName="tableOpinion" msprop:Generator_RowChangedName="OpinionRowChanged" msprop:Generator_TablePropName="Opinion" msprop:Generator_RowDeletingName="OpinionRowDeleting" msprop:Generator_RowChangingName="OpinionRowChanging" msprop:Generator_RowEvHandlerName="OpinionRowChangeEventHandler" msprop:Generator_RowDeletedName="OpinionRowDeleted" msprop:Generator_RowClassName="OpinionRow" msprop:Generator_UserTableName="Opinion" msprop:Generator_RowEvArgName="OpinionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_UserColumnName="UserId" type="xs:int" />
@@ -215,7 +250,7 @@ FROM  [User] INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ResultSource" msprop:Generator_TableClassName="ResultSourceDataTable" msprop:Generator_TableVarName="tableResultSource" msprop:Generator_TablePropName="ResultSource" msprop:Generator_RowDeletingName="ResultSourceRowDeleting" msprop:Generator_RowChangingName="ResultSourceRowChanging" msprop:Generator_RowEvHandlerName="ResultSourceRowChangeEventHandler" msprop:Generator_RowDeletedName="ResultSourceRowDeleted" msprop:Generator_UserTableName="ResultSource" msprop:Generator_RowChangedName="ResultSourceRowChanged" msprop:Generator_RowEvArgName="ResultSourceRowChangeEvent" msprop:Generator_RowClassName="ResultSourceRow">
+        <xs:element name="ResultSource" msprop:Generator_TableClassName="ResultSourceDataTable" msprop:Generator_TableVarName="tableResultSource" msprop:Generator_RowChangedName="ResultSourceRowChanged" msprop:Generator_TablePropName="ResultSource" msprop:Generator_RowDeletingName="ResultSourceRowDeleting" msprop:Generator_RowChangingName="ResultSourceRowChanging" msprop:Generator_RowEvHandlerName="ResultSourceRowChangeEventHandler" msprop:Generator_RowDeletedName="ResultSourceRowDeleted" msprop:Generator_RowClassName="ResultSourceRow" msprop:Generator_UserTableName="ResultSource" msprop:Generator_RowEvArgName="ResultSourceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UserId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_UserColumnName="UserId" type="xs:int" />
@@ -237,6 +272,13 @@ FROM  [User] INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="PollState" msprop:Generator_TableClassName="PollStateDataTable" msprop:Generator_TableVarName="tablePollState" msprop:Generator_TablePropName="PollState" msprop:Generator_RowDeletingName="PollStateRowDeleting" msprop:Generator_RowChangingName="PollStateRowChanging" msprop:Generator_RowEvHandlerName="PollStateRowChangeEventHandler" msprop:Generator_RowDeletedName="PollStateRowDeleted" msprop:Generator_UserTableName="PollState" msprop:Generator_RowChangedName="PollStateRowChanged" msprop:Generator_RowEvArgName="PollStateRowChangeEvent" msprop:Generator_RowClassName="PollStateRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PollState" msprop:Generator_ColumnVarNameInTable="columnPollState" msprop:Generator_ColumnPropNameInRow="PollState" msprop:Generator_ColumnPropNameInTable="PollStateColumn" msprop:Generator_UserColumnName="PollState" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -254,8 +296,8 @@ FROM  [User] INNER JOIN
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Opinion_User" msdata:parent="User" msdata:child="Opinion" msdata:parentkey="UserId" msdata:childkey="UserId" msprop:Generator_UserChildTable="Opinion" msprop:Generator_ChildPropName="GetOpinionRows" msprop:Generator_UserRelationName="FK_Opinion_User" msprop:Generator_ParentPropName="UserRow" msprop:Generator_RelationVarName="relationFK_Opinion_User" msprop:Generator_UserParentTable="User" />
-      <msdata:Relationship name="FK_Opinion_User1" msdata:parent="User" msdata:child="ResultSource" msdata:parentkey="UserId" msdata:childkey="UserId" msprop:Generator_UserChildTable="ResultSource" msprop:Generator_ChildPropName="GetResultSourceRows" msprop:Generator_UserRelationName="FK_Opinion_User1" msprop:Generator_ParentPropName="UserRow" msprop:Generator_RelationVarName="relationFK_Opinion_User1" msprop:Generator_UserParentTable="User" />
+      <msdata:Relationship name="FK_Opinion_User" msdata:parent="User" msdata:child="Opinion" msdata:parentkey="UserId" msdata:childkey="UserId" msprop:Generator_UserChildTable="Opinion" msprop:Generator_ChildPropName="GetOpinionRows" msprop:Generator_UserRelationName="FK_Opinion_User" msprop:Generator_RelationVarName="relationFK_Opinion_User" msprop:Generator_UserParentTable="User" msprop:Generator_ParentPropName="UserRow" />
+      <msdata:Relationship name="FK_Opinion_User1" msdata:parent="User" msdata:child="ResultSource" msdata:parentkey="UserId" msdata:childkey="UserId" msprop:Generator_UserChildTable="ResultSource" msprop:Generator_ChildPropName="GetResultSourceRows" msprop:Generator_UserRelationName="FK_Opinion_User1" msprop:Generator_RelationVarName="relationFK_Opinion_User1" msprop:Generator_UserParentTable="User" msprop:Generator_ParentPropName="UserRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

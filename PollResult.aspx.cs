@@ -19,14 +19,18 @@ namespace SimpleMobilePoll
             //}
 
             // 데이터베이스에서 데이터를 가져와서 여론조사 결과를 보여준다.
-            ApplicationState intMyState = 0;
-            Application.Lock();
-            intMyState = (ApplicationState)Application["MyState"];
-            Application.UnLock();
-            if (intMyState == ApplicationState.PollEnd)
+            //ApplicationState intMyState = 0;
+            //Application.Lock();
+            //intMyState = (ApplicationState)Application["MyState"];
+            //Application.UnLock();
+
+            PollStateTableAdapter adapter = new PollStateTableAdapter();
+            int currentState = (int)adapter.GetData().Rows[0]["PollState"];
+
+            if (currentState == (int)ApplicationState.PollEnd)
             {
-                var adapter = new ResultSourceTableAdapter();
-                var table = adapter.GetData();
+                var resultAdapter = new ResultSourceTableAdapter();
+                var table = resultAdapter.GetData();
 
                 // 참여자 총원 수
                 int AllPeopleNumber = table.Rows.Count;

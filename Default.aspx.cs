@@ -15,21 +15,25 @@ namespace SimpleMobilePoll
             if (!IsPostBack)
             {
                 // 여론조사 진행 상태에 따른 분기
-                Application.Lock();
-                ApplicationState myState = (ApplicationState)Application["MyState"];
-                Application.UnLock();
 
-                if (myState == ApplicationState.BeforePoll)         // 여론조사 시작 전
+                //Application.Lock();
+                //ApplicationState myState = (ApplicationState)Application["MyState"];
+                //Application.UnLock();
+
+                PollStateTableAdapter adapter = new PollStateTableAdapter();
+                int currentState = (int)adapter.GetData().Rows[0]["PollState"];
+
+                if (currentState == (int)ApplicationState.BeforePoll)         // 여론조사 시작 전
                     Response.Redirect("BeforePoll.aspx", true);
-                else if (myState == ApplicationState.PollEnd)       // 여론조사 종료
+                else if (currentState == (int)ApplicationState.PollEnd)       // 여론조사 종료
                     Response.Redirect("PollResult.aspx", true);
                 else // 여론조사 진행 중
                 {
                     // IP 주소를 검사해서 이미 참여했는지 검사
                     string userIPAddress = Request.UserHostAddress;
 
-                    var adapter = new UserTableAdapter();
-                    var table = adapter.GetData();
+                    var userAdapter = new UserTableAdapter();
+                    var table = userAdapter.GetData();
                     foreach (var row in table)
                     {
                         if (row.IPAddress == userIPAddress)
